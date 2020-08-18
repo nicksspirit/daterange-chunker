@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "daterange-chunker"
+version = "0.1.0"
+description = "Split a date range into a certain amount of equal sized chunks."
+authors = ["\"Nick Muoh\" <\"nickspirit3+github@gmail.com\">"]
+license = "MIT"
+
+[tool.poetry.scripts]
+daterangechunker = "daterange_chunker.app:main"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+enaml = "^0.11.2"
+pyqt5 = "^5.15.0"
+qtpy = "^1.9.0"
+
+[tool.poetry.dev-dependencies]
+QScintilla = "^2.11.5"
+pyinstaller = "^4.0"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
