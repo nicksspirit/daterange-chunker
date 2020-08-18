@@ -1,0 +1,59 @@
+from enaml.widgets.api import Label, DateSelector, Form, HGroup
+from enaml.stdlib.fields import IntField
+from enaml.layout.api import hbox
+from enaml.styling import StyleSheet, Style, Setter
+from enaml.validator import IntValidator
+from datetime import date
+
+
+FIELD_SIZE = (50, 50)
+
+
+enamldef FormView(Form):
+    attr start_date: date
+    attr end_date: date
+    attr num_of_chunks: int
+
+    column_spacing = 30
+    constraints = [
+        hbox(ch_lbl, ch_fld, day_lbl)
+    ]
+
+    StyleSheet:
+        Style:
+            style_class = 'input_fld'
+            Setter:
+                field = 'padding'
+                value = '0px 10px'
+
+    Label: sd_lbl:
+        text = "Start Date"
+
+    DateSelector: sd_fld:
+        style_class = 'input_fld'
+        minimum_size = FIELD_SIZE
+        calendar_popup = True
+        date := start_date
+
+    Label: ed_lbl:
+        text = "End Date"
+
+    DateSelector: ed_fld:
+        style_class = 'input_fld'
+        minimum_size = FIELD_SIZE
+        calendar_popup = True
+        date := end_date
+
+    HGroup:
+        align_widths = False
+        Label: ch_lbl:
+            text = "# of Chunks"
+
+        IntField: ch_fld:
+            validator = IntValidator(minimum=1)
+            style_class = 'input_fld'
+            minimum_size = FIELD_SIZE
+            value := num_of_chunks
+
+        Label: day_lbl:
+            text = "Hit enter to preview."
