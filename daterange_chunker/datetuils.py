@@ -1,7 +1,7 @@
 import datetime as dt
 from typing import Generator, Tuple
 
-Chunks = Generator[Tuple[dt.date, dt.date], None, None]
+Chunks = Generator[Tuple[dt.datetime, dt.datetime], None, None]
 
 
 def calc_delta(startdate: dt.date, enddate: dt.date, no_of_ranges: int) -> dt.timedelta:
